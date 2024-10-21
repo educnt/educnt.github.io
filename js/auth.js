@@ -4,34 +4,25 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    fetch('/data/users.json')
-        .then(response => response.json())
-        .then(users => {
-            const user = users.find(u => u.username === username && u.password === password);
+    // Récupération des utilisateurs stockés dans le localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.username === username && u.password === password);
+    
+    // Vérification de l'état du mode de mise à jour
+    const updateMode = JSON.parse(localStorage.getItem("updateMode")) || false;
 
-            if (user) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                switch (user.role) {
-                    case 'eleve':
-                        window.location.href = '/dashboard/eleve.html';
-                        break;
-                    case 'professeur':
-                        window.location.href = '/dashboard/professeur.html';
-                        break;
-                    case 'administration':
-                        window.location.href = '/dashboard/administration.html';
-                        break;
-                    case 'rectorat':
-                        window.location.href = '/dashboard/rectorat.html';
-                        break;
-                    case 'cpe':
-                        window.location.href = '/dashboard/cpe.html';
-                        break;
-                    default:
-                        document.getElementById("loginError").textContent = "Rôle non reconnu.";
-                }
-            } else {
-                document.getElementById("loginError").textContent = "Nom d'utilisateur ou mot de passe incorrect.";
-            }
-        });
+    if (user) {
+        // Vérification du mode de mise à jour
+        if (updateMode) {
+            alert("Le mode mise à jour est activé. Vous ne pouvez pas accéder aux tableaux de bord.");
+            window.location.href = "maintenance.html"; // Redirection vers la page d'alerte
+            return;
+        }
+        
+        // Stockage de l'utilisateur courant et redirection vers le tableau de bord correspondant
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        window.location.href = `dashboard_${user.role}.html`; // Redirection vers le tableau de bord correspondant
+    } else {
+        alert("Nom d'utilisateur ou mot de passe incorrect.");
+    }
 });
