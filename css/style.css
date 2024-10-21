@@ -1,43 +1,245 @@
+/* Structure de base */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9;
+    color: #333;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 0;
 }
 
+/* Header */
 header {
-    background: #4CAF50;
+    background-color: #2e86de;
     color: white;
-    padding: 10px 0;
+    padding: 15px 0;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2, h3 {
-    margin: 0 0 10px;
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #2e86de;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+a.btn:hover {
+    background-color: #eaf4ff;
+}
+
+/* Section formulaire */
+section {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2, section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2e86de;
 }
 
 form {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 input, select {
     padding: 10px;
-    margin: 10px 0;
-    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #2e86de;
 }
 
 button {
-    padding: 10px;
-    background: #4CAF50;
+    padding: 12px;
+    background-color: #2e86de;
     color: white;
     border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: #45a049;
+    background-color: #2271b3;
 }
 
-#loginError {
+/* Messages d'erreur ou de confirmation */
+#error, #loginError {
     color: red;
+    margin-top: 10px;
+    font-weight: 600;
+    display: none;
+}
+
+/* Liste des établissements, utilisateurs */
+#schoolList, #userList {
+    margin-top: 20px;
+}
+
+#schoolList div, #userList div {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#schoolList div h3, #userList div h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2e86de;
+}
+
+#schoolList div p, #userList div p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+#schoolList div button, #userList div button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#schoolList div button:hover, #userList div button:hover {
+    background-color: #e60000;
+}
+
+/* Tableaux de bord */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px;
+}
+
+.dashboard h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #2e86de;
+    margin-bottom: 30px;
+}
+
+.dashboard button {
+    background-color: #2e86de;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard button:hover {
+    background-color: #2271b3;
+}
+
+.dashboard .info-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard .info-box h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #2e86de;
+}
+
+.dashboard .info-box p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.dashboard .info-box button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dashboard .info-box button:hover {
+    background-color: #e60000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    section {
+        margin: 20px;
+    }
+
+    .dashboard {
+        margin: 20px;
+    }
+
+    .dashboard h1 {
+        font-size: 24px;
+    }
+
+    .info-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
