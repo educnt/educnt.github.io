@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Administration</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion de l'Administration</h1>
+    </header>
+    <section>
+        <h2>Créer un compte</h2>
+        <form id="createAccountForm">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" required>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" required>
+            <label for="role">Rôle :</label>
+            <select id="role">
+                <option value="eleve">Élève</option>
+                <option value="professeur">Professeur</option>
+                <option value="cpe">CPE</option>
+            </select>
+            <button type="submit">Créer</button>
+        </form>
+        <h2>Liste des utilisateurs</h2>
+        <div id="userList"></div>
+    </section>
+    <script src="../js/administration.js"></script>
+</body>
+</html>
